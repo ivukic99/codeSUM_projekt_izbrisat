@@ -1,7 +1,7 @@
 const mix = require('laravel-mix');
 
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const VuetifyLoaderPlugin = require('case-sensitive-paths-webpack-plugin');
 
 var webpackConfig = {
     plugins: [
