@@ -28,10 +28,10 @@
         <v-btn icon>
             <v-icon>mdi-magnify</v-icon>
         </v-btn>
-        <v-btn text>
+        <v-btn text to="/login">
             Prijava
         </v-btn>
-        <v-btn color="indigo lighten-5">
+        <v-btn color="indigo lighten-5" to="/register">
             <span style="color: #1B4188;">Registracija</span>
         </v-btn>
     </v-sheet>
