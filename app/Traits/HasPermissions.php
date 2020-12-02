@@ -29,5 +29,3 @@ trait HasPermission{
         return $this->permissions()->detach($this->getPermissionIdsBySlug($permssions));
     }
 }
-
-
