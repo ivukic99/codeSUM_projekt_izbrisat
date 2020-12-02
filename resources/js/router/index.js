@@ -9,7 +9,7 @@ Vue.use(Router);
 
 const routes = [
     {
-        path: '/hah',
+        path: '/',
         name: 'Naslovnica',
         component: Landing
     },
