@@ -42280,6 +42280,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-app",
+    { staticStyle: { "background-color": "#E0F7FA" } },
     [
       _c(
         "v-container",

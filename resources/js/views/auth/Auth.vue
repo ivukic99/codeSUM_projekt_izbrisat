@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background-color: #E0F7FA">
     <v-container  fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="8">
