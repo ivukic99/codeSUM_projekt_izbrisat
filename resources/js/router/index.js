@@ -2,8 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Landing from '../views/Landing.vue';
-import Login from '../views/auth/Login.vue';
-import Register from '../views/auth/Register.vue';
+import Auth from '../views/auth/Auth.vue';
 
 Vue.use(Router);
 
@@ -14,14 +13,9 @@ const routes = [
         component: Landing
     },
     {
-        path: '/login',
-        name: 'Login',
-        component: Login
-    },
-    {
-        path: '/register',
-        name: 'Register',
-        component: Register
+        path: '/auth',
+        name: 'Auth',
+        component: Auth
     },
 ]
 
