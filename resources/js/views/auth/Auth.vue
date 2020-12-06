@@ -164,6 +164,8 @@
 
 <script>
 import axios from "axios";
+import { mapActions } from 'vuex';
+
 export default {
   name: "Auth",
   data() {
@@ -192,6 +194,9 @@ export default {
     source: String,
   },
   methods: {
+    ...mapActions([
+      'saveUserToken'
+    ]),
     registerUser() {
       axios
         .post(
@@ -218,6 +223,9 @@ export default {
         .post("http://localhost/codeSUM_projekt/public/api/login", this.user)
         .then((response) => {
           console.log(response);
+          localStorage.setItem('token', response.data.access_token)
+          this.saveUserToken(response.data.access_token)
+          this.$router.push('/naslovnica')
         })
         .catch((err) => {
           console.log(err);
