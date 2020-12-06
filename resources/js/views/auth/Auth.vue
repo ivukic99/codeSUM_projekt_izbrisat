@@ -1,9 +1,9 @@
 <template>
-  <v-app style="background-color: #E0F7FA">
+  <v-app style="background-color: #E0F7FA;">
     <v-container  fluid>
-      <v-row align="center" justify="center">
+      <v-row style="height: 100vh;" align="center" justify="center">
         <v-col cols="12" sm="8" md="8">
-          <v-card class="elevation-12">
+          <v-card class="elevation-12"> 
             <v-window v-model="step">
               <v-window-item :value="1">
                 <v-row>
