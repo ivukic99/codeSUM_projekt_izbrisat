@@ -4,13 +4,13 @@
     <v-app-bar app color="#1B4188">
     <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = true"></v-app-bar-nav-icon>
 
-    <v-toolbar-title class="light">codeSUM</v-toolbar-title>
+    <v-toolbar-title class="light">NavbarUser</v-toolbar-title>
     <v-spacer></v-spacer>
     
     <div class="hidden-md-and-down">
-        <v-btn text to="/" class="light">Naslovnica</v-btn>
-        <v-btn text to="/tecajevi" class="light">Tečajevi</v-btn>
-        <v-btn text to="/postani_clan" class="light">Postani član</v-btn>
+        <v-btn text to="/">Naslovnica</v-btn>
+        <v-btn text to="/tecajevi">Tečajevi</v-btn>
+        <v-btn text to="/postani_clan">Postani član</v-btn>
     </div>
 
     <v-spacer></v-spacer>
@@ -26,19 +26,19 @@
     </v-sheet> -->
       <v-sheet color="#1B4188" class="hidden-md-and-down">
         <div v-if="isLoggedIn">
-          <v-btn icon class="light">
+          <v-btn icon>
             <v-icon>mdi-magnify</v-icon>
           </v-btn>
-          <v-btn text to="/auth" class="light"> Prijava </v-btn>
+          <v-btn text to="/auth"> Prijava </v-btn>
         </div>
         <!-- <v-btn color="indigo lighten-5" to="/register">
             <span style="color: #1B4188;">Registracija</span>
         </v-btn> -->
         <div v-else>
-          <v-btn icon class="light">
+          <v-btn icon>
             <v-icon>mdi-magnify</v-icon>
           </v-btn>
-          <v-btn text to="/auth" class="light"> Ime korisnika </v-btn>
+          <v-btn text to="/auth"> Ime korisnika </v-btn>
         </div>
       </v-sheet>
     </v-app-bar>
@@ -110,7 +110,7 @@ export default {
 <style>
 
  .v-btn__content, .light{
-     color: white !important;
+     color: white;
  }
 
 </style>

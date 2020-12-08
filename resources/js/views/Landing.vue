@@ -1,5 +1,6 @@
 <template>
-  <div style="height: 90vh">
+  <div>
+    <Navbar />
       <v-container>
           <v-row>
             <v-col class="d-flex flex-column justify-center" md="4" >
@@ -380,9 +381,11 @@
 </template>
 
 <script>
+import Navbar from '../components/Navbar.vue'
 import Timeline from '../components/Timeline.vue';
 export default {
   components:{
+    Navbar,
     Timeline
   },
   data(){
