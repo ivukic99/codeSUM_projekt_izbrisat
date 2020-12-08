@@ -1,7 +1,7 @@
 <template>
   <v-app style="background-color: #E0F7FA;">
     <v-container  fluid>
-      <v-row style="height: 100vh;" align="center" justify="center">
+      <v-row style="height: 100vh;"  justify="center">
         <v-col cols="12" sm="8" md="8">
           <v-card class="elevation-12"> 
             <v-window v-model="step">
@@ -35,20 +35,25 @@
                           type="text"
                           color="#1B4188"
                           v-model="user.email"
+                          :rules="[rules.required, rules.email]"
                         />
                         <v-text-field
                           id="password"
-                          label="Password"
+                          label="Unesite lozinku"
                           name="password"
                           prepend-icon="fas fa-lock"
-                          type="password"
+                          :type="show1 ? 'text' : 'password'"
                           color="#1B4188"
                           v-model="user.password"
+                          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                          :rules="[rules.required, rules.min]"
+                          hint="Najmanje 8 znakova"
+                          @click:append="show1 = !show1"
                         />
                       </v-form>
                     </v-card-text>
                     <div class="text-center mt-3">
-                      <v-btn rounded color="#1B4188" dark @click="loginUser">SING IN</v-btn>
+                      <v-btn rounded color="#1B4188" dark @click.prevent="loginUser">SING IN</v-btn>
                     </div>
                   </v-col>
                   <v-col cols="12" md="4" style="background-color: #1b4188">
@@ -103,12 +108,13 @@
                       </h4>
                       <v-form ref="registerForm" :value="formValid">
                         <v-text-field
-                          label="Name"
+                          label="Ime"
                           name="name"
                           prepend-icon="fas fa-user"
                           type="text"
                           color="#1B4188"
                           v-model="newUser.name"
+                          :rules="[rules.required]"
                         />
                         <v-text-field
                           label="Email"
@@ -117,20 +123,38 @@
                           type="text"
                           color="#1B4188"
                           v-model="newUser.email"
+                          :rules="[rules.required, rules.email]"
                         />
                         <v-text-field
                           id="password"
-                          label="Password"
+                          label="Unesite lozinku"
                           name="password"
                           prepend-icon="fas fa-lock"
-                          type="password"
+                          :type="show1 ? 'text' : 'password'"
                           color="#1B4188"
                           v-model="newUser.password"
+                          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                          :rules="[rules.required, rules.min]"
+                          hint="Najmanje 8 znakova"
+                          @click:append="show1 = !show1"
+                        />
+                        <v-text-field
+                          id="password"
+                          label="Ponovite lozinku"
+                          name="password"
+                          prepend-icon="fas fa-lock"
+                          :type="show1 ? 'text' : 'password'"
+                          color="#1B4188"
+                          v-model="newUser.rePassword"
+                          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                          :rules="[rules.required, rules.min, passwordConfirmationRule]"
+                          hint="Najmanje 8 znakova"
+                          @click:append="show1 = !show1"
                         />
                       </v-form>
                     </v-card-text>
                     <div class="text-center mt-n5">
-                      <v-btn rounded color="#1B4188" dark @click="registerUser"
+                      <v-btn rounded color="#1B4188" dark @click.prevent="registerUser"
                         >Register</v-btn
                       >
                     </div>
@@ -171,7 +195,8 @@ export default {
   data() {
     return {
       step: 1,
-      // -----------------------
+      show1: false,
+      valid: true,
       snackbar: {
         color: "success",
         show: false,
@@ -183,10 +208,21 @@ export default {
         email: "",
         name: "",
         password: "",
+        rePassword: ""
       },
       user: {
         email: "",
         password: "",
+      },
+      rules: {
+        required: (value) => !!value,
+        min: v => v.length >= 8 || "Minimalno 8 znakova.",
+        email: (value) => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return pattern.test(value);
+        },
+
+        emailMatch: () => "Email i lozinka se ne podudaraju.",
       },
     };
   },
@@ -225,11 +261,16 @@ export default {
           console.log(response);
           localStorage.setItem('token', response.data.access_token)
           this.saveUserToken(response.data.access_token)
-          this.$router.push('/naslovnica')
+          this.$router.push({name: 'Naslovnica'})
         })
         .catch((err) => {
           console.log(err);
         });
+    },
+  },
+  computed: {
+    passwordConfirmationRule() {
+      return this.password === this.rePassword || "Lozinka se mora podudrati.";
     },
   },
 };

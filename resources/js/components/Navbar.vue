@@ -15,7 +15,7 @@
 
     <v-spacer></v-spacer>
 
-    <v-sheet v-if="isLoggedIn" color="#667fcc" class="hidden-md-and-down">
+      <!-- <v-sheet v-if="isLoggedIn" color="#667fcc" class="hidden-md-and-down">
         <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
         </v-btn>
@@ -23,19 +23,25 @@
         <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
-    </v-sheet>
-    <v-sheet v-else color="#1B4188" class="hidden-md-and-down">
-        <v-btn icon>
+    </v-sheet> -->
+      <v-sheet color="#1B4188" class="hidden-md-and-down">
+        <div v-if="isLoggedIn">
+          <v-btn icon>
             <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-        <v-btn text to="/auth">
-            Prijava
-        </v-btn>
+          </v-btn>
+          <v-btn text to="/auth"> Prijava </v-btn>
+        </div>
         <!-- <v-btn color="indigo lighten-5" to="/register">
             <span style="color: #1B4188;">Registracija</span>
         </v-btn> -->
-    </v-sheet>
-  </v-app-bar>
+        <div v-else>
+          <v-btn icon>
+            <v-icon>mdi-magnify</v-icon>
+          </v-btn>
+          <v-btn text to="/auth"> Ime korisnika </v-btn>
+        </div>
+      </v-sheet>
+    </v-app-bar>
 
   <!--Navigation drawer for small devices-->
     <v-navigation-drawer
@@ -82,11 +88,22 @@
 export default {
     data(){
         return{
-            isLoggedIn: false,
+            isLoggedIn: true,
             drawer: false,
             group: null
         }
+    },
+    created() {
+    if (localStorage.getItem('token')) {
+      this.isLoggedIn = false;
     }
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('token');
+      this.$router.push({ name: "Auth" });
+    },
+  },
 }
 </script>
 
