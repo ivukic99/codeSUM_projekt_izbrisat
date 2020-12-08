@@ -1,116 +1,115 @@
 <template>
-<div>
+  <div>
+    <v-app-bar app dark color="#1B4188">
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-    <v-app-bar app color="#1B4188">
-    <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = true"></v-app-bar-nav-icon>
+      <v-toolbar-title>codeSUM</v-toolbar-title>
 
-    <v-toolbar-title class="light">NavbarUser</v-toolbar-title>
-    <v-spacer></v-spacer>
-    
-    <div class="hidden-md-and-down">
-        <v-btn text to="/">Naslovnica</v-btn>
-        <v-btn text to="/tecajevi">Tečajevi</v-btn>
-        <v-btn text to="/postani_clan">Postani član</v-btn>
-    </div>
+      <v-spacer></v-spacer>
 
-    <v-spacer></v-spacer>
-
-      <!-- <v-sheet v-if="isLoggedIn" color="#667fcc" class="hidden-md-and-down">
-        <v-btn icon>
+      <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+      </v-btn>
 
-        <v-btn icon>
+      <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-    </v-sheet> -->
-      <v-sheet color="#1B4188" class="hidden-md-and-down">
-        <div v-if="isLoggedIn">
-          <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-          <v-btn text to="/auth"> Prijava </v-btn>
-        </div>
-        <!-- <v-btn color="indigo lighten-5" to="/register">
-            <span style="color: #1B4188;">Registracija</span>
-        </v-btn> -->
-        <div v-else>
-          <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-          <v-btn text to="/auth"> Ime korisnika </v-btn>
-        </div>
-      </v-sheet>
+      </v-btn>
     </v-app-bar>
 
-  <!--Navigation drawer for small devices-->
+    <!--Navigation drawer-->
     <v-navigation-drawer
+      color="#1B4188"
       v-model="drawer"
-      absolute
-      temporary
+      app
+      dark
     >
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
+      <template v-slot:prepend>
+        <div>
+
+          <v-container style="height: 200px;" class="d-flex justify-center">
+            <div class="d-flex flex-column justify-space-around align-center"> 
+            <v-avatar size="100">
+            <img
+              v-bind:src="getUserDetails.img ? getUserDetails.img : 'https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914__340.png'"
+              alt="CodeSUM user"
+            >
+          </v-avatar>
+              <div class="d-flex flex-column align-center justify-around pa-3">
+                <span class="white--text text-h6 ">{{ getUserDetails.name }}</span>
+                <!--
+                <span class="white--text text-caption">{{ getUserDetails.role.type ? getUserDetails.role.type : 'Nije navedeno' }} | {{ getUserDetails.role.org ? getUserDetails.role.org : 'Nije navedno' }}</span>
+                -->
+              </div>
+            </div>
+          </v-container>
+
+        </div>
+      </template>
+
+      <hr style="background: white;"/>
+
+      <!--Links-->
+      <v-list-item-group
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Naslovnica</v-list-item-title>
-          </v-list-item>
+          <v-list>
+            <v-list-item
+              v-for="item in items"
+              :key="item.title"
+              link
+              :to='item.to'
+            >
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
 
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Tečajevi</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Postani član</v-list-item-title>
-          </v-list-item>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </v-list-item-group>
-      </v-list>
+
+      <!--Action buttons-->
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block color="red">
+            Odjava
+          </v-btn>
+        </div>
+      </template>
+
     </v-navigation-drawer>
-  
-</div>
+
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-    data(){
-        return{
-            isLoggedIn: true,
-            drawer: false,
-            group: null
-        }
+  data(){
+      return{
+          drawer: true,
+          group: null,
+          items: [
+          { title: 'Naslovnica', icon: 'mdi-view-dashboard', to: '/' },
+          { title: 'Profil', icon: 'mdi-account-box' },
+          { title: 'Tečajevi', icon: 'mdi-account-box' },
+          { title: 'Izazovi', icon: 'mdi-account-box' },
+          { title: 'Klanovi', icon: 'mdi-account-box' },
+          { title: 'Postavke', icon: 'mdi-account-box' },
+        ],
+      }
     },
-    created() {
-    if (localStorage.getItem('token')) {
-      this.isLoggedIn = false;
+    computed: {
+      ...mapGetters([
+        'getUserDetails'
+      ])
     }
-  },
-  methods: {
-    logout() {
-      localStorage.removeItem('token');
-      this.$router.push({ name: "Auth" });
-    },
-  },
 }
 </script>
 
 <style>
-
- .v-btn__content, .light{
-     color: white;
- }
 
 </style>
