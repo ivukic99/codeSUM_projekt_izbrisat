@@ -2,7 +2,7 @@
 <div>
 
     <v-app-bar app color="#1B4188">
-    <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = true"></v-app-bar-nav-icon>
 
     <v-toolbar-title class="light">codeSUM</v-toolbar-title>
     <v-spacer></v-spacer>

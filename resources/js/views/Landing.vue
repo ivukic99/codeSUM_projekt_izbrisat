@@ -229,6 +229,153 @@
 
       <!--Kreatori-->
 
+      <v-row>
+        <v-col cols="12" md="6">
+
+          <v-card
+          class="mx-auto mt-10"
+          max-width="344"
+          outlined
+        >
+          <v-list-item three-line>
+            <v-list-item-content>
+              <div class="text-center avatar__card">
+                <v-avatar
+                  size="100"
+                  color="black"
+                >
+                  <img
+                    src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/99424225_2554190311459227_4308358059136122880_o.jpg?_nc_cat=111&ccb=2&_nc_sid=174925&_nc_eui2=AeFLrHAaSQ75nMT6p1jr6qKcMknXUxRAO0oySddTFEA7SkYM4_Omi8t6OTJMvmyuHIJODkF2tzTrPI7Pnau38QcU&_nc_ohc=fdEeJ1s79eUAX_PRsXB&_nc_ht=scontent-vie1-1.xx&oh=623f7816333fa3dc82a04f5b50e01a14&oe=5FF4B3DC"
+                    alt="Stanko Bebek"
+                  >
+                </v-avatar>
+              </div>
+              <div class="text-center">
+                <v-list-item-title class="headline mb-1 mt-10">
+                  Stanko Bebek
+                </v-list-item-title>
+                <div class="overline mb-4">
+                  Informatika FPMOZ
+                </div>
+              </div>
+              <p class="font-weight-light" style="line-height: 1.3" align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu lectus id massa ullamcorper faucibus. 
+                Nulla nec vehicula nisi, eget auctor erat. Sed auctor facilisis ipsum et vestibulum. 
+                Donec vitae nulla suscipit nisl tempus blandit ut eu nisi. Duis sed dui velit. 
+                Sed dictum pretium enim, sit amet malesuada ex interdum sed. 
+                Proin tortor dolor, vehicula quis nulla ac, volutpat tincidunt nunc.</p>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-card-actions>
+            <v-btn
+              color="black"
+              fab
+              dark
+            >
+              <v-icon>mdi-github</v-icon>
+            </v-btn>
+            <v-btn
+              color="blue"
+              fab
+              dark
+            >
+              <v-icon>mdi-linkedin</v-icon>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+
+        </v-col>
+        <v-col cols="12" md="6">
+
+          <v-card
+          class="mx-auto mt-10"
+          max-width="344"
+          outlined
+        >
+          <v-list-item three-line>
+            <v-list-item-content>
+              <div class="text-center avatar__card">
+                <v-avatar
+                  size="100"
+                  color="black"
+                >
+                  <img
+                    src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/119899914_10217644272169835_2683984069419703109_o.jpg?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeHvuZy9tIT-VnO1IVwd8o6FF6mKKOBxsggXqYoo4HGyCJmOi-aNASJ2gXR-jCkIxYA&_nc_ohc=XREUwx_BB_kAX8r2jcQ&_nc_ht=scontent-vie1-1.xx&oh=94e00e25a85157c2eaff374c70e705b0&oe=5FD26330"
+                    alt="Igor Vukić"
+                  >
+                </v-avatar>
+              </div>
+              <div class="text-center">
+                <v-list-item-title class="headline mb-1 mt-10">
+                  Igor Vukić
+                </v-list-item-title>
+                <div class="overline mb-4">
+                  Informatika FPMOZ
+                </div>
+              </div>
+              <p class="font-weight-light" style="line-height: 1.3" align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu lectus id massa ullamcorper faucibus. 
+                Nulla nec vehicula nisi, eget auctor erat. Sed auctor facilisis ipsum et vestibulum. 
+                Donec vitae nulla suscipit nisl tempus blandit ut eu nisi. Duis sed dui velit. 
+                Sed dictum pretium enim, sit amet malesuada ex interdum sed. 
+                Proin tortor dolor, vehicula quis nulla ac, volutpat tincidunt nunc.</p>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-card-actions>
+            <v-btn
+              color="black"
+              fab
+              dark
+            >
+              <v-icon>mdi-github</v-icon>
+            </v-btn>
+            <v-btn
+              color="blue"
+              fab
+              dark
+            >
+              <v-icon>mdi-linkedin</v-icon>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+
+        </v-col>
+      </v-row>
+
+      <!--Footer-->
+
+    <v-footer
+      class="mt-15"
+      color="#1B4188"
+      padless
+    >
+      <v-row
+        justify="center"
+        no-gutters
+      >
+        <v-btn
+          v-for="link in links"
+          :key="link"
+          color="white"
+          text
+          rounded
+          class="my-2"
+        >
+          {{ link }}
+        </v-btn>
+        <v-col
+          cols="12"
+          style="background: #2a60c4ad;"
+        >
+          <div style="color: white; text-align: center; padding: 15px;">
+            {{ new Date().getFullYear() }} — <strong>CodeSUM</strong>
+          </div>
+        </v-col>
+      </v-row>
+    </v-footer>
+
+        
+
     </div>
 </template>
 
@@ -300,7 +447,13 @@ export default {
           color: '#1B4188',
           icon: 'mdi-buffer',
         },
-      ]
+      ],
+
+      links: [
+        'Naslovnica',
+        'Tečajevi',
+        'Postani član',
+      ],
 
     }
   }
@@ -308,6 +461,11 @@ export default {
 </script>
 
 <style>
+.avatar__card{
+  position: absolute;
+  top: -60px;
+  left: 125px;
+}
 @media only screen and (max-width: 960px) {
   #landing-image{
     display: none;
