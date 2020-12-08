@@ -14,7 +14,10 @@ class CreateKategorijeTable extends Migration
     public function up()
     {
         Schema::create('kategorije', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unsigned();
+            $table->string('Naziv', 50);
+            $table->text('Opis');
+            $table->integer('Bodovna_vrijednost');
             $table->timestamps();
         });
     }

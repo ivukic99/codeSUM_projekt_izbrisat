@@ -14,8 +14,11 @@ class CreateTecajTable extends Migration
     public function up()
     {
         Schema::create('tecaj', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unsigned();
+            $table->unsignedBigInteger('Kategorije_id');
             $table->timestamps();
+
+            $table->foreign('Kategorije_id')->references('id')->on('kategorije');
         });
     }
 
