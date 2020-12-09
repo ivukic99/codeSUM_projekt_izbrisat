@@ -38,7 +38,7 @@
           <v-btn icon class="light">
             <v-icon>mdi-magnify</v-icon>
           </v-btn>
-          <v-btn text to="/auth" class="light"> Ime korisnika </v-btn>
+          <v-btn text to="/auth" class="light"> Prijava </v-btn>
         </div>
       </v-sheet>
     </v-app-bar>
