@@ -1,5 +1,6 @@
 <template>
   <v-app style="background-color: #E0F7FA;">
+    <Navbar />
     <v-container  fluid>
       <v-row style="height: 100vh;"  justify="center">
         <v-col cols="12" sm="8" md="8">
@@ -189,9 +190,14 @@
 <script>
 import axios from "axios";
 import { mapActions } from 'vuex';
+import Navbar from '../../components/Navbar.vue';
 
 export default {
+  components: { Navbar },
   name: "Auth",
+  components: {
+    Navbar
+  },
   data() {
     return {
       step: 1,
@@ -231,7 +237,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'saveUserToken'
+      'saveUserToken',
+      'setUserDetails'
     ]),
     registerUser() {
       axios
@@ -243,6 +250,9 @@ export default {
           console.log(response);
           if (response.data && response.data.success) {
             this.snackbar.show = true;
+            this.saveUserToken(response.data.access_token)
+            this.setUserDetails(response.data.access_token)
+            this.$router.push({name: 'Pocetna'})
           }
         })
         .catch(() => {
@@ -261,7 +271,8 @@ export default {
           console.log(response);
           localStorage.setItem('token', response.data.access_token)
           this.saveUserToken(response.data.access_token)
-          this.$router.push({name: 'Naslovnica'})
+          this.setUserDetails(response.data.access_token)
+          this.$router.push({name: 'Pocetna'})
         })
         .catch((err) => {
           console.log(err);

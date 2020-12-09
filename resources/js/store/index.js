@@ -12,8 +12,8 @@ export default new Vuex.Store({
       userDetails: {}
   },
   getters:{
-    getTest(state){
-        return state.token;
+    getLogged(state){
+        return state.isUserLoggednIn;
     },
     getUserDetails(state){
       return state.userDetails
@@ -26,6 +26,7 @@ export default new Vuex.Store({
     },
     SET_USER_DETAILS(state, payload){
       state.userDetails = payload
+      state.isUserLoggednIn = true
     }
   },
   actions: {
