@@ -267,21 +267,34 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-card-actions>
-            <v-btn
-              color="black"
-              fab
-              dark
-            >
-              <v-icon>mdi-github</v-icon>
-            </v-btn>
-            <v-btn
-              color="blue"
-              fab
-              dark
-            >
-              <v-icon>mdi-linkedin</v-icon>
-            </v-btn>
+          <v-card-actions class="d-flex justify-space-between">
+            <div>
+              <v-btn
+                color="black"
+                fab
+                dark
+              >
+                <v-icon>mdi-github</v-icon>
+              </v-btn>
+              <v-btn
+                color="blue"
+                fab
+                dark
+              >
+                <v-icon>mdi-linkedin</v-icon>
+              </v-btn>
+            </div>
+
+            <div class="text-right">
+              <v-btn
+                rounded
+                color="#1B4188"
+                dark
+                to="/kreatori/stanko"
+              >
+                Više
+              </v-btn>
+            </div>
           </v-card-actions>
         </v-card>
 
@@ -322,21 +335,34 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-card-actions>
-            <v-btn
-              color="black"
-              fab
-              dark
-            >
-              <v-icon>mdi-github</v-icon>
-            </v-btn>
-            <v-btn
-              color="blue"
-              fab
-              dark
-            >
-              <v-icon>mdi-linkedin</v-icon>
-            </v-btn>
+          <v-card-actions class="d-flex justify-space-between">
+            <div>
+              <v-btn
+                color="black"
+                fab
+                dark
+              >
+                <v-icon>mdi-github</v-icon>
+              </v-btn>
+              <v-btn
+                color="blue"
+                fab
+                dark
+              >
+                <v-icon>mdi-linkedin</v-icon>
+              </v-btn>
+            </div>
+
+            <div class="text-right">
+              <v-btn
+                rounded
+                color="#1B4188"
+                dark
+                to="/kreatori/igor"
+              >
+                Više
+              </v-btn>
+            </div>
           </v-card-actions>
         </v-card>
 
