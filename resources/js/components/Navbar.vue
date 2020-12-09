@@ -1,19 +1,23 @@
 <template>
-<div>
-
+  <div>
     <v-app-bar app color="#1B4188">
-    <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        class="hidden-lg-and-up"
+        @click="drawer = true"
+      ></v-app-bar-nav-icon>
 
-    <v-toolbar-title class="light">codeSUM</v-toolbar-title>
-    <v-spacer></v-spacer>
-    
-    <div class="hidden-md-and-down">
+      <v-toolbar-title class="light"
+        >code<span class="font-weight-medium">SUM</span></v-toolbar-title
+      >
+      <v-spacer></v-spacer>
+
+      <div class="hidden-md-and-down">
         <v-btn text to="/" class="light">Naslovnica</v-btn>
         <v-btn text to="/tecajevi" class="light">Tečajevi</v-btn>
         <v-btn text to="/postani_clan" class="light">Postani član</v-btn>
-    </div>
+      </div>
 
-    <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
 
       <!-- <v-sheet v-if="isLoggedIn" color="#667fcc" class="hidden-md-and-down">
         <v-btn icon>
@@ -38,21 +42,13 @@
           <v-btn icon class="light">
             <v-icon>mdi-magnify</v-icon>
           </v-btn>
-          <v-btn text to="/auth" class="light"> Prijava </v-btn>
         </div>
       </v-sheet>
     </v-app-bar>
 
-  <!--Navigation drawer for small devices-->
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-    >
-      <v-list
-        nav
-        dense
-      >
+    <!--Navigation drawer for small devices-->
+    <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-list nav dense>
         <v-list-item-group
           v-model="group"
           active-class="deep-purple--text text--accent-4"
@@ -80,37 +76,30 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-  
-</div>
+  </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            isLoggedIn: true,
-            drawer: false,
-            group: null
-        }
-    },
-    created() {
-    if (localStorage.getItem('token')) {
-      this.isLoggedIn = false;
+  data() {
+    return {
+      isLoggedIn: true,
+      drawer: false,
+      group: null,
+    };
+  },
+  created() {
+    if (localStorage.getItem("token")) {
+      this.isLoggedIn = true;
     }
   },
-  methods: {
-    logout() {
-      localStorage.removeItem('token');
-      this.$router.push({ name: "Auth" });
-    },
-  },
-}
+  methods: {},
+};
 </script>
 
 <style>
-
- .v-btn__content, .light{
-     color: white !important;
- }
-
+.v-btn__content,
+.light {
+  color: white !important;
+}
 </style>

@@ -192,6 +192,7 @@ import axios from "axios";
 import { mapActions } from 'vuex';
 import Navbar from '../../components/Navbar.vue';
 
+
 export default {
   components: { Navbar },
   name: "Auth",
@@ -206,7 +207,7 @@ export default {
       snackbar: {
         color: "success",
         show: false,
-        text: "Registration is success!",
+        text: "Registracija je uspiješna!",
         timeout: 3000,
       },
       formValid: false,
@@ -252,14 +253,14 @@ export default {
             this.snackbar.show = true;
             this.saveUserToken(response.data.access_token)
             this.setUserDetails(response.data.access_token)
-            this.$router.push({name: 'Pocetna'})
+            /* this.$router.push({name: 'Pocetna'}) */
           }
         })
         .catch(() => {
           this.snackbar = {
             color: "#C62828",
             show: true,
-            text: "The email has already been taken.",
+            text: "Email se već koristi.",
             timeout: 3000,
           };
         });
@@ -275,7 +276,12 @@ export default {
           this.$router.push({name: 'Pocetna'})
         })
         .catch((err) => {
-          console.log(err);
+          this.snackbar = {
+            color: "#C62828",
+            show: true,
+            text: "Greška, email ili lozinka su neispravni.",
+            timeout: 3000,
+          };
         });
     },
   },
