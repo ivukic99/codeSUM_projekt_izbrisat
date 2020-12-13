@@ -108,7 +108,7 @@
 
           <!--Što je CodeSUM kartice-->
           <v-row class="mt-10">
-            <v-col v-for="(item, index) in cards" :key="index">
+            <v-col v-for="(item, index) in cards" :key="index" xs="12" sm="12" md="6">
               <v-hover v-slot:default="{ hover }" open-delay="200">
                 <v-card
                   :elevation="hover ? 16 : 2"
