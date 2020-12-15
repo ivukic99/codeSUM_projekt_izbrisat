@@ -52,6 +52,9 @@
                           @click:append="show1 = !show1"
                         />
                       </v-form>
+                      <div class="text-right mt-3">
+                      <a href="/reset-password" class="text-decoration-none">Forgot password?</a>
+                      </div>
                     </v-card-text>
                     <div class="text-center mt-3">
                       <v-btn rounded color="#1B4188" dark @click.prevent="loginUser">SING IN</v-btn>
