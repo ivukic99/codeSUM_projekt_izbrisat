@@ -2,12 +2,12 @@
   <div>
     <Navbar />
 
-    <FilterSearch />
+    <FilterSearch @changed_category="changeCategory($event)"/>
 
     <v-container>
         
         <v-row>
-            <v-col v-for="i in 8" :key="i" xs="12" sm="12" md="6" lg="6">
+            <v-col v-for="(course, index)  in filteredCourses" :key="index" xs="12" sm="12" md="6" lg="6">
                 
                 <v-card
                     :loading="loading"
@@ -24,7 +24,7 @@
 
                     <v-img
                     height="200"
-                    src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png"
+                    :src="course.image"
                     ></v-img>
 
 
@@ -35,19 +35,19 @@
                         class="mx-0"
                     >
                         
-                        <v-card-title>Test Course</v-card-title>
+                        <v-card-title>{{ course.name }}</v-card-title>
 
                     </v-row>
 
                     <div>
-                        <p style="text-align: justify;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur?</p>
+                        <p style="text-align: justify;"> {{ course.description }} </p>
                     </div>
                     </v-card-text>
 
                     <div class="d-flex justify-content-end mt-3 mr-5">
 
                         <v-rating
-                        :value="4.5"
+                        :value="course.rating.stars"
                         color="amber"
                         dense
                         half-increments
@@ -56,7 +56,7 @@
                         ></v-rating>
 
                         <div class="grey--text ml-4">
-                        (112)
+                        {{ course.rating.people_asked }}
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                         <v-icon left>
                             mdi-clock
                         </v-icon>
-                            4h
+                            {{ course.material_hours }}
                         </v-chip>
 
                         <v-chip
@@ -90,7 +90,7 @@
                         <v-icon left>
                             mdi-account
                         </v-icon>
-                            218
+                            {{ course.participants }}
                         </v-chip>
 
                         <v-chip
@@ -102,7 +102,7 @@
                         <v-icon left>
                             mdi-map
                         </v-icon>
-                            24
+                            {{ course.materials }}
                         </v-chip>
 
                         <v-chip
@@ -114,7 +114,7 @@
                         <v-icon left>
                             mdi-note
                         </v-icon>
-                            32
+                            {{ course.code_tasks }}
                         </v-chip>
 
                     </v-chip-group>
@@ -141,6 +141,151 @@ export default {
     data: () => ({
       loading: false,
       selection: 1,
+      currentCategory: 'All',
+      courses: [
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 1',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Data science'
+          },
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 2',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Data science'
+          },
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 3',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Basics of programming'
+          },
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 4',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Web development'
+          },
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 5',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Data science'
+          },
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 6',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Web development'
+          },
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 7',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Mobile applications'
+          },
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 8',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Algorithms'
+          },
+          
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 8',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Basics of programming'
+          },
+          
+          {
+              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
+              name: 'Test Course 8',
+              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
+              rating: {
+                  stars: 4.5,
+                  people_asked: 112
+              },
+              material_hours: 4,
+              participants: 218,
+              materials: 24,
+              code_tasks: 32,
+              category: 'Databases'
+          },
+      ]
     }),
 
     methods: {
@@ -149,7 +294,25 @@ export default {
 
         setTimeout(() => (this.loading = false), 2000)
       },
+
+      changeCategory: function(category) {
+          this.currentCategory = category
+		}
     },
+
+    computed: {
+        filteredCourses(){
+            var category = this.currentCategory
+			
+			if(this.currentCategory === "All") {
+				return this.courses;
+			} else {
+				return this.courses.filter(function(course) {
+					return course.category === category;
+				});
+			}
+        }
+    }
 
 }
 </script>

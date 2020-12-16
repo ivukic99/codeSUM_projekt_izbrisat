@@ -6,8 +6,10 @@
       >
 
         <v-select
+          v-model="selected_category"
           :items="items"
           label="Kategorija"
+          @change="changed_category()"
         ></v-select>
 
       </v-form>
@@ -26,12 +28,21 @@ export default {
 
   data(){
     return{
+      selected_category: 'All',
       items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
+        'All',
+        'Data science',
+        'Web development',
+        'Algorithms',
+        'Databases',
+        'Basics of programming',
       ],
+    }
+  },
+
+  methods: {
+    changed_category(){
+      this.$emit('changed_category', this.selected_category)
     }
   }
 
