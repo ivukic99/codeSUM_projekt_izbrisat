@@ -160,7 +160,7 @@ export default {
           },
           {
               image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 2',
+              name: 'Python data visualization',
               description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
               rating: {
                   stars: 4.5,
@@ -274,7 +274,7 @@ export default {
           
           {
               image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 8',
+              name: 'Test Course 10',
               description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
               rating: {
                   stars: 4.5,
@@ -313,7 +313,11 @@ export default {
 			
 			if(category === "All" && term === "") {
 				return this.courses;
-			}else {
+			}else if(this.currentCategory === "All"){
+                return this.courses.filter(function(course) {
+                    return course.name.includes(term);
+                });
+            }else {
                 return this.courses.filter(function(course) {
                     return course.category === category && course.name.includes(term);
                 });
