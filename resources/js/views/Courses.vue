@@ -2,7 +2,7 @@
   <div>
     <Navbar />
 
-    <FilterSearch @changed_category="changeCategory($event)"/>
+    <FilterSearch @changed_category="changeCategory($event)" @changed_term="changeTerm($event)"/>
 
     <v-container>
         
@@ -141,6 +141,7 @@ export default {
     data: () => ({
       loading: false,
       selection: 1,
+      currentTerm: '',
       currentCategory: 'All',
       courses: [
           {
@@ -173,7 +174,7 @@ export default {
           },
           {
               image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 3',
+              name: 'Python 3',
               description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
               rating: {
                   stars: 4.5,
@@ -258,7 +259,7 @@ export default {
           
           {
               image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 8',
+              name: 'Uvod u Python',
               description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
               rating: {
                   stars: 4.5,
@@ -295,22 +296,28 @@ export default {
         setTimeout(() => (this.loading = false), 2000)
       },
 
+      changeTerm: function(term){
+          this.currentTerm = term
+      },
+
       changeCategory: function(category) {
+          this.currentTerm = ""
           this.currentCategory = category
 		}
     },
 
     computed: {
         filteredCourses(){
+            var term = this.currentTerm
             var category = this.currentCategory
 			
-			if(this.currentCategory === "All") {
+			if(category === "All" && term === "") {
 				return this.courses;
-			} else {
-				return this.courses.filter(function(course) {
-					return course.category === category;
-				});
-			}
+			}else {
+                return this.courses.filter(function(course) {
+                    return course.category === category && course.name.includes(term);
+                });
+            }
         }
     }
 

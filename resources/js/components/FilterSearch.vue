@@ -15,7 +15,7 @@
       </v-form>
     </div>
     <div class="search_box">
-        <input class="search_input" type="text" style="color: white;">
+        <input class="search_input" type="text" style="color: white;" v-model="search_term" @keyup.enter="changed_term()">
         <a class="search_button" href="#">
             <i class="fas fa-search" style="color: white;"></i>
         </a>
@@ -28,6 +28,7 @@ export default {
 
   data(){
     return{
+      search_term: '',
       selected_category: 'All',
       items: [
         'All',
@@ -41,6 +42,10 @@ export default {
   },
 
   methods: {
+    changed_term(){
+      this.$emit('changed_term', this.search_term)
+      this.search_term = ''
+    },
     changed_category(){
       this.$emit('changed_category', this.selected_category)
     }
