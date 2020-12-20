@@ -24,7 +24,7 @@ export default {
             'getUserDetails'
         ])
     },
-    mounted(){
+    created(){
         this.$store.dispatch('setUserDetails')
     }
 }

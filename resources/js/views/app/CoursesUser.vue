@@ -44,19 +44,25 @@
                     </div>
                     </v-card-text>
 
-                    <div class="d-flex justify-content-end mt-3 mr-5">
+                    <div class="d-flex justify-content-around mt-3 mr-5">
 
-                        <v-rating
-                        :value="course.rating.stars"
-                        color="amber"
-                        dense
-                        half-increments
-                        readonly
-                        size="14"
-                        ></v-rating>
+                        <v-btn color="#1B4188">
+                            Upiši me
+                        </v-btn>
 
-                        <div class="grey--text ml-4">
-                        {{ course.rating.people_asked }}
+                        <div class="d-flex">
+                            <v-rating
+                            :value="course.rating.stars"
+                            color="amber"
+                            dense
+                            half-increments
+                            readonly
+                            size="14"
+                            ></v-rating>
+
+                            <div class="grey--text ml-4">
+                            {{ course.rating.people_asked }}
+                            </div>
                         </div>
                     </div>
 
@@ -328,7 +334,7 @@ export default {
             }
         }
     },
-    mounted(){
+    created(){
         this.$store.dispatch('setUserDetails')
     }
 

@@ -79,6 +79,7 @@ export default {
     return {
       drawer: true,
       group: null,
+      links: null,
       items: [
         { title: "Naslovnica", icon: "mdi-view-dashboard", to: "/" },
         { title: "Profil", icon: "mdi-account", to: "/profil" },
