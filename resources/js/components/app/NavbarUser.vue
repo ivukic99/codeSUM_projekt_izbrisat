@@ -81,11 +81,11 @@ export default {
       group: null,
       items: [
         { title: "Naslovnica", icon: "mdi-view-dashboard", to: "/" },
-        { title: "Profil", icon: "mdi-account-box", to: "/profil" },
-        { title: "Tečajevi", icon: "mdi-account-box", to: "/tecajevi" },
-        { title: "Izazovi", icon: "mdi-account-box" },
-        { title: "Klanovi", icon: "mdi-account-box" },
-        { title: "Postavke", icon: "mdi-account-box" },
+        { title: "Profil", icon: "mdi-account", to: "/profil" },
+        { title: "Tečajevi", icon: "mdi-notebook-edit-outline", to: "/tecajevi" },
+        { title: "Izazovi", icon: "mdi-card-text-outline" },
+        { title: "Klanovi", icon: "mdi-account-multiple-outline" },
+        { title: "Postavke", icon: "mdi-card-bulleted-settings-outline" },
       ],
     };
   },
