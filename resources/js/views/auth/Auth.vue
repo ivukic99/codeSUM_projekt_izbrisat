@@ -255,7 +255,7 @@ export default {
           if (response.data && response.data.success) {
             this.snackbar.show = true;
             this.saveUserToken(response.data.access_token)
-            this.setUserDetails(response.data.access_token)
+            this.setUserDetails()
             /* this.$router.push({name: 'Pocetna'}) */
           }
         })
@@ -275,7 +275,7 @@ export default {
           console.log(response);
           localStorage.setItem('token', response.data.access_token)
           this.saveUserToken(response.data.access_token)
-          this.setUserDetails(response.data.access_token)
+          this.setUserDetails()
           this.$router.push({name: 'Pocetna'})
         })
         .catch((err) => {

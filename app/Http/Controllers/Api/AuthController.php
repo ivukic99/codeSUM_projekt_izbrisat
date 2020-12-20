@@ -27,6 +27,7 @@ class AuthController extends Controller{
                 'scope' => '*',
             ],
         ]);
+
         return response()->json(json_decode((string) $response->getBody(), true));
     }
 
