@@ -48,7 +48,7 @@
       <hr style="background: white" />
 
       <!--Links-->
-      <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+      <v-list-item-group v-model="group">
         <v-list>
           <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
             <v-list-item-icon>
@@ -81,8 +81,8 @@ export default {
       group: null,
       items: [
         { title: "Naslovnica", icon: "mdi-view-dashboard", to: "/" },
-        { title: "Profil", icon: "mdi-account-box" },
-        { title: "Tečajevi", icon: "mdi-account-box" },
+        { title: "Profil", icon: "mdi-account-box", to: "/profil" },
+        { title: "Tečajevi", icon: "mdi-account-box", to: "/tecajevi" },
         { title: "Izazovi", icon: "mdi-account-box" },
         { title: "Klanovi", icon: "mdi-account-box" },
         { title: "Postavke", icon: "mdi-account-box" },

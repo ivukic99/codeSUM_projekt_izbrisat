@@ -13,7 +13,7 @@
 
       <div class="hidden-md-and-down">
         <v-btn text to="/" class="light">Naslovnica</v-btn>
-        <v-btn text to="/tecajevi" class="light">Tečajevi</v-btn>
+        <v-btn text to="/tecajevi_pregled" class="light">Tečajevi</v-btn>
         <v-btn text to="/postani_clan" class="light">Postani član</v-btn>
       </div>
 

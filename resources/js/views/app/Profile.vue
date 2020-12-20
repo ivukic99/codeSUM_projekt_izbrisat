@@ -1,19 +1,23 @@
 <template>
-    <div>
-        <NavbarUser />
-        
-        <v-container>
-            {{ getUserDetails }}
-        </v-container>
-    </div>
+  <div>
+
+      <Navbar />
+      <v-container>
+
+        Profile
+
+        {{ getUserDetails }}
+
+      </v-container>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import NavbarUser from '../../components/app/NavbarUser.vue';
+import Navbar from '../../components/app/NavbarUser.vue';
 export default {
     components:{
-        NavbarUser
+        Navbar
     },
     computed: {
         ...mapGetters([

@@ -6,6 +6,8 @@ import Auth from '../views/auth/Auth.vue';
 import ResetPassword from '../views/auth/ResetPassword.vue';
 import BecomeMember from '../views/BecomeMember.vue';
 import Courses from '../views/Courses.vue';
+import CoursesUser from '../views/app/CoursesUser.vue';
+import Profile from '../views/app/Profile.vue';
 import Home from '../views/app/Home.vue';
 import Stanko from '../views/creators/Stanko.vue';
 import Igor from '../views/creators/Igor.vue';
@@ -24,8 +26,8 @@ const routes = [
         }
     },
     {
-        path: '/tecajevi',
-        name: 'Tecajevi',
+        path: '/tecajevi_pregled',
+        name: 'Tecajevi pregled',
         component: Courses,
         meta: {
             middleware: [Middleware.guest]
@@ -75,6 +77,22 @@ const routes = [
         path: '/naslovnica',
         name: 'Pocetna',
         component: Home,
+        meta: {
+            middleware: [Middleware.auth]
+        }
+    },
+    {
+        path: '/tecajevi',
+        name: 'Tecajevi',
+        component: CoursesUser,
+        meta: {
+            middleware: [Middleware.auth]
+        }
+    },
+    {
+        path: '/profil',
+        name: 'Profile',
+        component: Profile,
         meta: {
             middleware: [Middleware.auth]
         }
