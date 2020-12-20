@@ -10,7 +10,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import NavbarUser from '../components/NavbarUser.vue';
+import NavbarUser from '../../components/NavbarUser.vue';
 export default {
     components:{
         NavbarUser
