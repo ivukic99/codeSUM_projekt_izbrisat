@@ -53,7 +53,9 @@
                         />
                       </v-form>
                       <div class="text-right mt-3">
-                      <a href="/reset-password" class="text-decoration-none">Forgot password?</a>
+                      <p class="forgot-password text-right">
+                        <router-link to="forgot">Forgot password?</router-link>
+                      </p>
                       </div>
                     </v-card-text>
                     <div class="text-center mt-3">

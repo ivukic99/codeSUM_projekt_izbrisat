@@ -3,7 +3,8 @@ import Router from 'vue-router';
 
 import Landing from '../views/Landing.vue';
 import Auth from '../views/auth/Auth.vue';
-import ResetPassword from '../views/auth/ResetPassword.vue';
+import Forgot from '../views/auth/Forgot.vue';
+import Reset from '../views/auth/Reset.vue';
 import Courses from '../views/Courses.vue';
 import BecomeMember from '../views/BecomeMember.vue';
 import Home from '../views/Home.vue';
@@ -48,9 +49,17 @@ const routes = [
         }
     },
     {
-        path: '/reset-password',
-        name: 'ResetPassword',
-        component: ResetPassword,
+        path: '/forgot',
+        name: 'Forgot',
+        component: Forgot,
+        meta: {
+            middleware: [Middleware.guest]
+        }
+    },
+    {
+        path: '/reset/:token',
+        name: 'Reset',
+        component: Reset,
         meta: {
             middleware: [Middleware.guest]
         }

@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/me', function (Request $request) {
 
 Route::post('/login', 'Api\AuthController@login')->name('api.login');
 Route::post('/register', 'Api\AuthController@register')->name('api.register');
+Route::post('/forgot', 'ForgotController@forgot')->name('forgot');
+Route::post('/reset', 'ForgotController@reset')->name('reset');
